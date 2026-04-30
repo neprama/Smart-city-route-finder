@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.controls {
+    padding: 10px;
+    background: #f4f4f4;
+    display: flex;
+    gap: 10px;
+}
+
+#map {
+    height: 500px;
+}
+
+#info {
+    padding: 10px;
+    font-size: 16px;
+}
+
+#locationBtn {
+    background-color: rgb(55, 53, 53);
+    color: #e0d6d6;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: medium;
+    
+}
+
+#locationBtn:hover {
+    background-color: #0056b3;
+}
+
+#findRouteBtn {
+    background-color: rgb(55, 53, 53);
+    color: #e0d6d6;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: medium;
+    
+}
+
+#stops-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.stop-input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 220px;
+}
+
+#stop-order-banner {
+    font-family: Arial, sans-serif;
+}
+
+#info {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0 ,0.1);
+}

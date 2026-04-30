@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Traffic Route Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+
+<div id="map"></div>
+
+<div id="info">Distance: - <br> ETA: -</div>
+
+<div class="controls">
+
+    <!-- START LOCATION -->
+    <div class="ctrl-group">
+        <label class="ctrl-label">Start</label>
+        <div style="display:flex; gap:6px;">
+            <button id="btn-live"   class="toggle-btn active-toggle" onclick="selectStartMode('live')">📍 Live</button>
+            <button id="btn-manual" class="toggle-btn"               onclick="selectStartMode('manual')">✏️ Type</button>
+        </div>
+        <input type="text" id="start-input" placeholder="e.g. Shivajinagar, Pune" style="display:none; margin-top:6px;">
+        <button id="locationBtn" onclick="getLocation()" style="margin-top:6px;">📍 Get my location</button>
+    </div>
+
+    <!-- STOPS -->
+    <div class="ctrl-group">
+        <label class="ctrl-label">Stops</label>
+        <div id="stops-container">
+            <input type="text" class="stop-input" placeholder="Stop 1">
+        </div>
+        <button onclick="addStop()" id="addStopBtn" style="margin-top:6px;">+ Add stop</button>
+    </div>
+
+    <!-- VEHICLE SELECTOR — CSP constraint -->
+    <div class="ctrl-group">
+        <label class="ctrl-label">Vehicle</label>
+        <div id="vehicle-btns" style="display:flex; gap:6px;">
+            <button class="vehicle-btn active-vehicle" data-v="car"     onclick="selectVehicle('car')">🚗 Car</button>
+            <button class="vehicle-btn"                data-v="scooter" onclick="selectVehicle('scooter')">🛵 Two wheeler</button>
+            <button class="vehicle-btn"                data-v="walking" onclick="selectVehicle('walking')">🚶 Walk</button>
+        </div>
+    </div>
+
+    <!-- ROAD AVOIDANCE — CSP constraint -->
+    <div class="ctrl-group">
+        <label class="ctrl-label">Avoid roads <span style="font-weight:400;font-size:11px;color:#888;">(name or partial name)</span></label>
+        <div id="avoid-container">
+            <div class="avoid-row">
+                <input type="text" class="avoid-input" placeholder="e.g. FC Road">
+                <button class="avoid-remove" onclick="removeAvoid(this)" title="Remove">×</button>
+            </div>
+        </div>
+        <button onclick="addAvoid()" style="margin-top:6px;">+ Add road to avoid</button>
+    </div>
+
+    <div class="ctrl-group" style="align-self:flex-end;">
+        <button id="findRouteBtn" onclick="findRoute()">Find Optimal Route</button>
+    </div>
+
+</div>
+
+<!-- OPTIMAL ORDER BANNER -->
+<div id="stop-order-banner" style="display:none; padding:8px 14px; background:#eafaf1; color:#1a7a4a; font-size:13px; border-top:1px solid #b2dfdb;">
+    Optimal visit order: <strong id="stop-order-text"></strong>
+</div>
+
+<!-- CSP WARNINGS BANNER -->
+<div id="csp-warnings-banner" style="display:none; padding:8px 14px; background:#fff8e7; color:#856404; font-size:13px; border-top:1px solid #ffd966;">
+    ⚠ <span id="csp-warnings-text"></span>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
