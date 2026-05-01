@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load graph
-G = ox.load_graphml(r"C:\College work\SY\Artificial Intelligence\Smart city prototype\data\pune_roads.graphml")
+G = ox.load_graphml(r"PATH TO YOUR DOWNLOADED MAP FILE")
 
 
 # ================= VEHICLE PROFILES =================
